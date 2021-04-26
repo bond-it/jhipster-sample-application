@@ -1,0 +1,44 @@
+
+application {
+  config {
+    baseName Freelanadge,
+    applicationType monolith,
+    packageName com.bondit,
+    authenticationType jwt,
+    prodDatabaseType PostgreSQL,
+    clientFramework react
+  }
+  entities *
+}
+
+entity Owner {
+	UUID Id
+    String CompanyName
+    String Category
+    String Contact
+}
+
+entity Product {
+	UUID Id
+	String Name
+    BigDecimal Price
+}
+
+entity Client {
+	UUID Id
+	String Nickname
+	String Contact
+}
+
+entity Timetable {
+	DateTime From
+    DateTime To
+}
+
+relationship OneToMany {
+  Product to Owner
+  Client to Owner
+  Timetable to Owner
+  Client to Timetable
+}
+    
